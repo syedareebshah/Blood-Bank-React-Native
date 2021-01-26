@@ -16,7 +16,20 @@ function Navigation() {
     <NavigationContainer>
       <Stack.Navigator>
 
-      <Stack.Screen name="Log" component={Log} options={{
+
+         <Stack.Screen name="Log" component={Log} options={{
+          title: 'Blood Bank',
+          headerStyle: {
+            backgroundColor: '#4867AA',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            alignSelf: 'center'
+          },
+        }} /> 
+
+      <Stack.Screen name="Search" component={Search} options={{
           title: 'Blood Bank',
           headerStyle: {
             backgroundColor: '#4867AA',
@@ -28,17 +41,9 @@ function Navigation() {
           },
         }} />
 
-<Stack.Screen name="Search" component={Search} options={{
-          title: 'Blood Bank',
-          headerStyle: {
-            backgroundColor: '#4867AA',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            alignSelf: 'center'
-          },
-        }} />
+      
+
+
 
       <Stack.Screen name="Donor" component={Donor} options={{
           title: 'Welcome to Donor Dashboard',

@@ -20,7 +20,8 @@ import {
 import { useState } from 'react';
  import Navigation from './config/Navigation'
  import { Root } from "native-base";
-// import { Provider } from "react-redux";
+ import store from './Store'
+import { Provider } from "react-redux";
 
 
 
@@ -31,10 +32,12 @@ const App: () => React$Node = () => {
   console.log("ali", ali)
   console.log(value)
   return(
-    
+    <Provider store={store}>
       <Root>
       <Navigation />
       </Root>
+      </Provider>
+  
    
      
   )

@@ -18,10 +18,13 @@ const Log = ({navigation}) => {
   return (
     <ScrollView style={styles.main}>
       <View style={styles.one}>
+        
         <Image style={styles.logo} source={require('./assets/logo.png')} />
+        
         <Button onPress={() => navigation.navigate('Home')} style={{ margin: 5, }} block>
           <Text style={{ color: 'white', }}>Login With Facebook</Text>
         </Button>
+        
 
       </View>
       
