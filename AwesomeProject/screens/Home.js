@@ -17,17 +17,34 @@ import { Button, Item, Input } from 'native-base';
 
 
 
+
 const Home = ({navigation}) => {
-    const [selectedValue, setSelectedValue] = useState("java");
+
+    let [bloodGrop, setBloodGrop] = useState("")
+    // console.log(bloodGrop)
+
+    const SearchBlood = () =>{
+        let bg = bloodGrop.toLocaleUpperCase()
+        if ( bg == "A+" || bg == "A-" || bg == "B+" || bg == "B-" || bg == "O+" || bg == "O-" || bg == "AB+" || bg == "AB-"){
+            console.log("mil gya", bg)
+        navigation.navigate('Search', { bg : bg})
+        }
+        else{
+            alert("Invalid Entry")
+        }
+        
+    }
+
+    
     return (
         <ScrollView style={styles.main}>
             <View style={styles.one} >
                 <Image style={styles.logo} source={require('./assets/logo.png')} />
                 <Item style={{flex:1, marginLeft:20, marginRight:20,}} rounded>
-                    <Input placeholder='Search Blood Group' />
+                    <Input value={bloodGrop} onChangeText={(Text) => setBloodGrop(Text)} placeholder='Search Blood Group' />
                 </Item>
 
-                <Button onPress={() => navigation.navigate('Search')} style={{
+                <Button onPress={()=> SearchBlood() } style={{
                     justifyContent: 'center',
                     alignItems: 'center', flex: 1, margin: 20,
                 }} rounded success>

@@ -1,47 +1,10 @@
 import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
+import database from '@react-native-firebase/database';
+import { useState, useEffect } from 'react';
 
 
-
-
-// const DATA = props.name
-// const DATA = 
-// [
-//   {
-//     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-//     title: 'First Item',
-//   },
-//   {
-//     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-//     title: 'Second Item',
-//   },
-//   {
-//     id: '5864a0f-3da1-471f-bd96-145571e29d72',
-//     title: 'Third Item',
-//   },
-//   {
-//     id: '-3da1-471f-bd96-145571e29d72',
-//     title: '4th Item',
-//   },
-//   {
-//     id: '-3da1-471f-145571e29d72',
-//     title: '5th Item',
-//   },
-//   {
-//     id: '-3d-471f-145571e29d72',
-//     title: '6th Item',
-//   },
-//   {
-//     id: '-3d-471f-145e29d72',
-//     title: '7th Item',
-//   },
-//   {
-//     id: '-3d-471f-1e29d72',
-//     title: '8th Item',
-//   },
-
-// ];
 
 const Item = ({ title }) => (
   <View style={styles.item}>
@@ -49,14 +12,111 @@ const Item = ({ title }) => (
   </View>
 );
 
-const Search = (props) => {
-  const DATA = props.data
+const Search = ({ route, navigation, data }) => {
+  let [Rdata, setRdata] = useState("")
+
+
+  const DATA = data
 
   const renderItem = ({ item }) => (
     <Item title={item.title} />
   );
-  console.log("ye hy",props.name)
+  const x = route.params;
+  console.log("ye lo ", x.bg)
+
+
+  if (x.bg == "A+") {
+    areeb()
+    // database().ref('A+').once('value').then(snapshot => {
+    //         console.log('User data: ', snapshot.val());
+    //       });
+  } else {
+    console.log("err")
+  }
+
   
+
+  function areeb() {
+    database().ref('A+').once('value').then(snapshot => {
+      let dataRef = Object.values(snapshot.val())
+      setRdata(dataRef)
+      console.log('User data: ', snapshot.val());
+      console.log('User ka abba: ', dataRef);
+
+    });
+    console.log("hahaha")
+  }
+
+ 
+  console.log("gotData====>", Rdata) //mil b rha hy chll b rha hy 
+
+// useEffect(() => {
+//     areeb()
+
+//   }, []);
+
+
+
+  // switch (x.bg) {
+  //   case "A+":
+
+  //       database().ref('A+').once('value').then(snapshot => {
+  //         let dataRef = Object.values(snapshot.val())
+  //         // setRdata(dataRef)
+  //         console.log('User data: ', snapshot.val());
+  //         console.log('User ka abba: ', dataRef);
+
+  //       });
+
+
+  //     break;
+  //   case "A-":
+  //     database().ref('A-').once('value').then(snapshot => {
+  //       console.log('User data: ', snapshot.val());
+  //     });
+  //     break;
+  //   case "B+":
+  //     database().ref('B+').once('value').then(snapshot => {
+  //       console.log('User data: ', snapshot.val());
+  //     });
+  //     break;
+  //   case "B-":
+  //     database().ref('B-').once('value').then(snapshot => {
+  //       console.log('User data: ', snapshot.val());
+  //     });
+  //     break;
+  //   case "O+":
+  //     database().ref('O+').once('value').then(snapshot => {
+  //       console.log('User data: ', snapshot.val());
+  //     });
+  //     break;
+  //   case "O-":
+  //     database().ref('O-').once('value').then(snapshot => {
+  //       console.log('User data: ', snapshot.val());
+  //     });
+  //     break;
+  //   case "AB+":
+  //     database().ref('AB+').once('value').then(snapshot => {
+  //       console.log('User data: ', snapshot.val());
+  //     });
+  //     break;
+  //   case "AB-":
+  //     database().ref('AB-').once('value').then(snapshot => {
+  //       console.log('User data: ', snapshot.val());
+  //     });
+  //     break;
+  //   default:
+  //     console.log("Not Found")
+
+  // }
+
+
+
+
+
+
+  // database().ref('AB-').once('value').then(snapshot => { console.log('User data: ', snapshot.val());
+  // });
 
 
   return (
@@ -78,12 +138,12 @@ const styles = StyleSheet.create({
   item: {
     shadowColor: "#000",
     shadowOffset: {
-        width: 0,
-        height: 2,
+      width: 0,
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    
+
     elevation: 5,
     backgroundColor: '#f9c2ff',
     padding: 20,
@@ -96,9 +156,9 @@ const styles = StyleSheet.create({
 });
 
 
-const mapStateToProps = (state) =>({
-data : state.data
+const mapStateToProps = (state) => ({
+  data: state.data
 
 })
 
-export default connect(mapStateToProps,null)(Search);
+export default connect(mapStateToProps, null)(Search);

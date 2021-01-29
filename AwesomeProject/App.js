@@ -7,8 +7,6 @@
  */
 
 import React from 'react';
-import Test from './Test'
-import Camera from './Camera';
 import {
   ScrollView,
   TextInput,
@@ -17,7 +15,6 @@ import {
   View,
   Text,
 } from 'react-native';
-import { useState } from 'react';
  import Navigation from './config/Navigation'
  import { Root } from "native-base";
  import store from './Store'
@@ -26,11 +23,8 @@ import { Provider } from "react-redux";
 
 
 const App: () => React$Node = () => {
-  let ali = ["hello", "hye", "jio"]
-  const [value, onChangeText] = React.useState();
-  // let [state, setState] = React.useState("jiiii");
-  console.log("ali", ali)
-  console.log(value)
+ 
+  
   return(
     <Provider store={store}>
       <Root>

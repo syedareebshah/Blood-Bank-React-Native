@@ -2,7 +2,6 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Test from '../Test.js'
-import Camera from '../Camera';
 import Log from '../screens/Log'
 import Home from '../screens/Home'
 import Donor from '../screens/Donor.js';
@@ -16,9 +15,9 @@ function Navigation() {
     <NavigationContainer>
       <Stack.Navigator>
 
-
-         <Stack.Screen name="Log" component={Log} options={{
-          title: 'Blood Bank',
+         {/* search n donate */}
+      <Stack.Screen name="Home" component={Home} options={{
+          title: 'Welcome to Blood Bank',
           headerStyle: {
             backgroundColor: '#4867AA',
           },
@@ -27,7 +26,9 @@ function Navigation() {
             fontWeight: 'bold',
             alignSelf: 'center'
           },
-        }} /> 
+        }} />
+
+         {/* shows results */}
 
       <Stack.Screen name="Search" component={Search} options={{
           title: 'Blood Bank',
@@ -41,9 +42,22 @@ function Navigation() {
           },
         }} />
 
-      
+        {/* //login page */}
+
+      <Stack.Screen name="Log" component={Log} options={{
+          title: 'Blood Bank',
+          headerStyle: {
+            backgroundColor: '#4867AA',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            alignSelf: 'center'
+          },
+        }} /> 
 
 
+          {/* //register donor */}
 
       <Stack.Screen name="Donor" component={Donor} options={{
           title: 'Welcome to Donor Dashboard',
@@ -56,8 +70,12 @@ function Navigation() {
             alignSelf: 'center'
           },
         }} />
-      
-      
+
+
+         
+       
+
+      {/* lastpage   */}
         <Stack.Screen name="User" component={User} options={{
           title: 'Donor Dashboard',
           headerStyle: {
@@ -69,18 +87,9 @@ function Navigation() {
             alignSelf: 'center'
           },
         }} />
+
       
-      <Stack.Screen name="Home" component={Home} options={{
-          title: 'Welcome to Blood Bank',
-          headerStyle: {
-            backgroundColor: '#4867AA',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            alignSelf: 'center'
-          },
-        }} />
+     
         
       
         
@@ -95,7 +104,7 @@ function Navigation() {
           },
         }} />
 
-        <Stack.Screen name="Camera" component={Camera} />
+        {/* <Stack.Screen name="Camera" component={Camera} /> */}
         
 
 
