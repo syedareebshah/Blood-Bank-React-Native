@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 
 
 const Search = ({route, navigation}) => {
-  let [Rdata, setRdata] = useState([{ name:'Loading results' , id :"3456" }])
+  let [Rdata, setRdata] = useState([{ name:'Loading results'}])
 
 
   const x = route.params;

@@ -8,6 +8,7 @@ import Donor from '../screens/Donor.js';
 import User from '../screens/User.js';
 import Search from '../screens/Search.js';
 import Sinup  from "../screens/Sinup";
+import Location from '../screens/Location.js'
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,35 @@ function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+
+      <Stack.Screen name="Log" component={Log} options={{
+          title: 'Blood Bank',
+          headerStyle: {
+            backgroundColor: '#4867AA',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            alignSelf: 'center'
+          },
+        }} /> 
+
+      <Stack.Screen name="Location" component={Location} options={{
+          title: 'Welcome to Donor Dashboard',
+          headerStyle: {
+            backgroundColor: '#4867AA',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            alignSelf: 'center'
+          },
+        }} />
+
+      
+         
+
+      
 
         
           {/* //register donor */}
@@ -72,17 +102,7 @@ function Navigation() {
           },
         }} />
 
-      <Stack.Screen name="Log" component={Log} options={{
-          title: 'Blood Bank',
-          headerStyle: {
-            backgroundColor: '#4867AA',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            alignSelf: 'center'
-          },
-        }} /> 
+      
 
          
 
