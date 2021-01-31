@@ -1,141 +1,118 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { ScrollView, View,  StyleSheet,  Text,  } from 'react-native';
 import { connect } from 'react-redux';
 import database from '@react-native-firebase/database';
 import { useState, useEffect } from 'react';
 
 
 
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
-const Search = ({ route, navigation, data }) => {
-  let [Rdata, setRdata] = useState("")
 
 
-  const DATA = data
+const Search = ({route, navigation}) => {
+  let [Rdata, setRdata] = useState([{ name:'Loading results' , id :"3456" }])
 
-  const renderItem = ({ item }) => (
-    <Item title={item.title} />
-  );
+
   const x = route.params;
   console.log("ye lo ", x.bg)
 
-
-  if (x.bg == "A+") {
-    areeb()
-    // database().ref('A+').once('value').then(snapshot => {
-    //         console.log('User data: ', snapshot.val());
-    //       });
-  } else {
-    console.log("err")
-  }
-
+  switch (x.bg) {
+    case "A+":
   
-
-  function areeb() {
-    database().ref('A+').once('value').then(snapshot => {
-      let dataRef = Object.values(snapshot.val())
-      setRdata(dataRef)
-      console.log('User data: ', snapshot.val());
-      console.log('User ka abba: ', dataRef);
-
-    });
-    console.log("hahaha")
+      useEffect(()=>{
+            database().ref('A+').once('value').then(snapshot =>{
+              let dataRef = Object.values(snapshot.val());
+              setRdata(dataRef)
+            })
+        },[])
+  
+  
+      break;
+    case "A-":
+      useEffect(()=>{
+        database().ref('A-').once('value').then(snapshot =>{
+          let dataRef = Object.values(snapshot.val());
+          setRdata(dataRef)
+        })
+    },[])
+      break;
+    case "B+":
+      useEffect(()=>{
+        database().ref('B+').once('value').then(snapshot =>{
+          let dataRef = Object.values(snapshot.val());
+          setRdata(dataRef)
+        })
+    },[])
+      break;
+    case "B-":
+      useEffect(()=>{
+        database().ref('B-').once('value').then(snapshot =>{
+          let dataRef = Object.values(snapshot.val());
+          setRdata(dataRef)
+        })
+    },[])
+      break;
+    case "O+":
+      useEffect(()=>{
+        database().ref('O+').once('value').then(snapshot =>{
+          let dataRef = Object.values(snapshot.val());
+          setRdata(dataRef)
+        })
+    },[])
+      break;
+    case "O-":
+      useEffect(()=>{
+        database().ref('O-').once('value').then(snapshot =>{
+          let dataRef = Object.values(snapshot.val());
+          setRdata(dataRef)
+        })
+    },[])
+      break;
+    case "AB+":
+      useEffect(()=>{
+        database().ref('AB+').once('value').then(snapshot =>{
+          let dataRef = Object.values(snapshot.val());
+          setRdata(dataRef)
+        })
+    },[])
+      break;
+    case "AB-":
+      useEffect(()=>{
+        database().ref('AB-').once('value').then(snapshot =>{
+          let dataRef = Object.values(snapshot.val());
+          setRdata(dataRef)
+        })
+    },[])
+      break;
+    default:
+      console.log("Not Found")
+  
   }
 
- 
-  console.log("gotData====>", Rdata) //mil b rha hy chll b rha hy 
-
-// useEffect(() => {
-//     areeb()
-
-//   }, []);
-
-
-
-  // switch (x.bg) {
-  //   case "A+":
-
-  //       database().ref('A+').once('value').then(snapshot => {
-  //         let dataRef = Object.values(snapshot.val())
-  //         // setRdata(dataRef)
-  //         console.log('User data: ', snapshot.val());
-  //         console.log('User ka abba: ', dataRef);
-
-  //       });
-
-
-  //     break;
-  //   case "A-":
-  //     database().ref('A-').once('value').then(snapshot => {
-  //       console.log('User data: ', snapshot.val());
-  //     });
-  //     break;
-  //   case "B+":
-  //     database().ref('B+').once('value').then(snapshot => {
-  //       console.log('User data: ', snapshot.val());
-  //     });
-  //     break;
-  //   case "B-":
-  //     database().ref('B-').once('value').then(snapshot => {
-  //       console.log('User data: ', snapshot.val());
-  //     });
-  //     break;
-  //   case "O+":
-  //     database().ref('O+').once('value').then(snapshot => {
-  //       console.log('User data: ', snapshot.val());
-  //     });
-  //     break;
-  //   case "O-":
-  //     database().ref('O-').once('value').then(snapshot => {
-  //       console.log('User data: ', snapshot.val());
-  //     });
-  //     break;
-  //   case "AB+":
-  //     database().ref('AB+').once('value').then(snapshot => {
-  //       console.log('User data: ', snapshot.val());
-  //     });
-  //     break;
-  //   case "AB-":
-  //     database().ref('AB-').once('value').then(snapshot => {
-  //       console.log('User data: ', snapshot.val());
-  //     });
-  //     break;
-  //   default:
-  //     console.log("Not Found")
-
-  // }
-
-
-
-
-
-
-  // database().ref('AB-').once('value').then(snapshot => { console.log('User data: ', snapshot.val());
-  // });
-
+console.log("gotData====>", Rdata) //mil b rha hy chll b rha hy 
 
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
-    </SafeAreaView>
+    <ScrollView style={styles.main}>
+      {Rdata.map((v, i) => {
+        return (
+          <View key={i}>
+            <Text style={styles.item}>Name: {v.name} {"\n"}Blood Group: {v.bloogGrop} {"\n"}Contact: {v.phoneNo}</Text>
+          </View>
+        )
+      })}
+
+    </ScrollView>
   );
+
 }
 
+
 const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    flexDirection: 'column',
   },
   item: {
+    fontSize:18,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -150,9 +127,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
   },
-  title: {
-    fontSize: 32,
-  },
+  
 });
 
 

@@ -14,7 +14,7 @@ import { Button,Input,Item } from "native-base";
 
 
 
-const Log = ({navigation}) => {
+const Sinup = ({navigation}) => {
   return (
     <ScrollView style={styles.main}>
       <View style={styles.one}>
@@ -29,14 +29,14 @@ const Log = ({navigation}) => {
           </Item>
         
         <Button onPress={() => navigation.navigate('Home')} style={{ margin: 5, }} block>
-          <Text style={{ color: 'white', }}>Login </Text>
+          <Text style={{ color: 'white', }}> Sign up </Text>
         </Button>
 
-        <Text style={{ color: 'black', fontSize:20 }}> Don't have account? Sign Up </Text>
+        {/* <Text style={{ color: 'black', fontSize:20 }}> Don't have account? Sign Up </Text>
         
-        <Button onPress={() => navigation.navigate('Sinup')} style={{ margin: 5, width: '40%' , alignSelf:'center' }} block>
+        <Button onPress={() => navigation.navigate('Home')} style={{ margin: 5, width: '40%' , alignSelf:'center' }} block>
           <Text style={{ color: 'white', }}>Sign up </Text>
-        </Button>
+        </Button> */}
         
 
       </View>
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Log;
+export default Sinup;

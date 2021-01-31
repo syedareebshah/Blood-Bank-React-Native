@@ -7,6 +7,7 @@ import Home from '../screens/Home'
 import Donor from '../screens/Donor.js';
 import User from '../screens/User.js';
 import Search from '../screens/Search.js';
+import Sinup  from "../screens/Sinup";
 
 const Stack = createStackNavigator();
 
@@ -15,48 +16,7 @@ function Navigation() {
     <NavigationContainer>
       <Stack.Navigator>
 
-         {/* search n donate */}
-      <Stack.Screen name="Home" component={Home} options={{
-          title: 'Welcome to Blood Bank',
-          headerStyle: {
-            backgroundColor: '#4867AA',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            alignSelf: 'center'
-          },
-        }} />
-
-         {/* shows results */}
-
-      <Stack.Screen name="Search" component={Search} options={{
-          title: 'Blood Bank',
-          headerStyle: {
-            backgroundColor: '#4867AA',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            alignSelf: 'center'
-          },
-        }} />
-
-        {/* //login page */}
-
-      <Stack.Screen name="Log" component={Log} options={{
-          title: 'Blood Bank',
-          headerStyle: {
-            backgroundColor: '#4867AA',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            alignSelf: 'center'
-          },
-        }} /> 
-
-
+        
           {/* //register donor */}
 
       <Stack.Screen name="Donor" component={Donor} options={{
@@ -71,11 +31,7 @@ function Navigation() {
           },
         }} />
 
-
-         
-       
-
-      {/* lastpage   */}
+        {/* lastpage   */}
         <Stack.Screen name="User" component={User} options={{
           title: 'Donor Dashboard',
           headerStyle: {
@@ -88,6 +44,79 @@ function Navigation() {
           },
         }} />
 
+
+        {/* search n donate */}
+      <Stack.Screen name="Home" component={Home} options={{
+          title: 'Welcome to Blood Bank',
+          headerStyle: {
+            backgroundColor: '#4867AA',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            alignSelf: 'center'
+          },
+        }} />
+
+        {/* shows results */}
+
+      <Stack.Screen name="Search" component={Search} options={{
+          title: 'Blood Bank',
+          headerStyle: {
+            backgroundColor: '#4867AA',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            alignSelf: 'center'
+          },
+        }} />
+
+      <Stack.Screen name="Log" component={Log} options={{
+          title: 'Blood Bank',
+          headerStyle: {
+            backgroundColor: '#4867AA',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            alignSelf: 'center'
+          },
+        }} /> 
+
+         
+
+         
+
+        {/* //Sinup page */}
+
+      <Stack.Screen name="Sinup" component={Sinup} options={{
+          title: 'Blood Bank',
+          headerStyle: {
+            backgroundColor: '#4867AA',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            alignSelf: 'center'
+          },
+        }} />
+
+       
+
+        
+
+        
+
+        
+
+
+
+
+         
+       
+
+      
       
      
         

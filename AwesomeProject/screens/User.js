@@ -17,36 +17,44 @@ import { Button, Toast } from 'native-base';
 
 
 
-const User = () => {
+const User = ({route, navigation}) => {
+    const data = route.params
+    console.log("....",data)
 
     return (
         <ScrollView style={styles.main}>
             <View style={styles.one} >
                 <Image style={styles.logo} source={require('./assets/logo.png')} />
-                <Text style={{ color: 'red', marginBottom: 10, marginTop: 10, fontWeight: 'bold', fontSize: 26, }}>Profile</Text>
+                <Text style={{padding:20, color: 'yellow', marginBottom: 10, marginTop: 10, fontWeight: 'bold', fontSize: 26, marginLeft:10, marginRight:10, backgroundColor:'#5F6061',shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 4,
+},
+shadowOpacity: 0.30,
+shadowRadius: 4.65,
 
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', }}>
-                    <Text style={styles.heading}>Logged in as:</Text>
-                    <Text style={styles.txt}>Jhon Doe</Text>
-                </View>
+elevation: 8,}}>Thank you for becoming a part of this noble cause</Text>
+
+                
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <Text style={styles.heading}>Full Name: </Text>
-                    <Text style={styles.txt}>Jhon Doe Qureshi</Text>
+                    <Text style={styles.txt}>{data.name}</Text>
                 </View>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
                     <Text style={styles.heading}>Blood Group: </Text>
-                    <Text style={styles.txt}>O+</Text>
+                    <Text style={styles.txt}>{data.bloodGrop}</Text>
+                </View>
+                <View style={{ flex: 1, flexDirection: 'row', }}>
+                    <Text style={styles.heading}>Age: </Text>
+                    <Text style={styles.txt}>{data.age}</Text>
                 </View>
                 <View style={{ flex: 1, flexDirection: 'row', marginBottom: 20 }}>
                     <Text style={styles.heading}>Mobile No: </Text>
-                    <Text style={styles.txt}>+92 3123456789</Text>
+                    <Text style={styles.txt}>{data.phoneNo}</Text>
                 </View>
-                <Button onPress={() => Toast.show({
-                    text: 'Edit Functionality will be available soon.',
-                    buttonText: 'Okay',
-                   
-                })} primary style={{ padding: '10%', alignSelf: 'center' }}>
-                    <Text style={{ color: 'white', }}>Edit Profile</Text>
+                <Button onPress={() =>navigation.navigate('Home')}
+                 primary style={{ padding: '10%', alignSelf: 'center', paddingBottom:20 }}>
+                    <Text style={{ color: 'white', }}>Back to Home</Text>
                 </Button>
                 
             </View>
@@ -83,8 +91,8 @@ const styles = StyleSheet.create({
     },
     logo: {
         resizeMode: 'contain',
-        height: 90,
-        width: 90,
+        height: 120,
+        width: 120,
     },
 });
 

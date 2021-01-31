@@ -24,10 +24,12 @@ const Donor = ({ navigation }) => {
     let [age, setAge] = useState("")
 
 
+
     const [selectedValue, setSelectedValue] = useState("java");
 
     const Register = () => {
         let user = {
+            id: " ",
             name,
             bloogGrop,
             phoneNo,
@@ -44,54 +46,105 @@ const Donor = ({ navigation }) => {
             setBloogGrop("");
             setPhoneNo("");
             setAge("");
-            navigation.navigate('User')
 
         }
-
 
         // database().ref('/').child('O+').push(user)
 
         // const reference = database().ref('/users/123');
     }
     let bgCheck = (user) => {
+        var tempKey = Math.random().toString()
         var bg = user.bloogGrop.toUpperCase();
-        var firstChar = user.name.slice(0,1) 
-        var lastChar = user.name.slice(1) 
+        var firstChar = user.name.slice(0, 1)
+        var lastChar = user.name.slice(1)
         firstChar = firstChar.toUpperCase();
         lastChar = lastChar.toLowerCase()
         var full = firstChar + lastChar
         // console.log(full)
         user.name = full
         user.bloogGrop = bg
+        user.id = tempKey;
+        console.log("jeeto", user)
 
         // console.log("bgCheck", bg, user)
         switch (bg) {
             case "A+":
                 database().ref('/').child('A+').push(user)
+                navigation.navigate('User', {
+                    name: name,
+                    bloodGrop: bloogGrop,
+                    phoneNo: phoneNo,
+                    age: age,
+                })
+
                 break;
             case "A-":
                 database().ref('/').child('A-').push(user)
+                navigation.navigate('User', {
+                    name: name,
+                    bloodGrop: bloogGrop,
+                    phoneNo: phoneNo,
+                    age: age,
+                })
                 break;
             case "B+":
                 database().ref('/').child('B+').push(user)
+                navigation.navigate('User', {
+                    name: name,
+                    bloodGrop: bloogGrop,
+                    phoneNo: phoneNo,
+                    age: age,
+                })
                 break;
             case "B-":
                 database().ref('/').child('B-').push(user)
+                navigation.navigate('User', {
+                    name: name,
+                    bloodGrop: bloogGrop,
+                    phoneNo: phoneNo,
+                    age: age,
+                })
                 break;
             case "O+":
                 database().ref('/').child('O+').push(user)
+                navigation.navigate('User', {
+                    name: name,
+                    bloodGrop: bloogGrop,
+                    phoneNo: phoneNo,
+                    age: age,
+                })
                 break;
             case "O-":
                 database().ref('/').child('O-').push(user)
+                navigation.navigate('User', {
+                    name: name,
+                    bloodGrop: bloogGrop,
+                    phoneNo: phoneNo,
+                    age: age,
+                })
                 break;
             case "AB+":
                 database().ref('/').child('AB+').push(user)
+                navigation.navigate('User', {
+                    name: name,
+                    bloodGrop: bloogGrop,
+                    phoneNo: phoneNo,
+                    age: age,
+                })
                 break;
             case "AB-":
                 database().ref('/').child('AB-').push(user)
+                navigation.navigate('User', {
+                    name: name,
+                    bloodGrop: bloogGrop,
+                    phoneNo: phoneNo,
+                    age: age,
+                })
                 break;
             default:
                 alert("Please Enter Correct Blood Group")
+                break;
 
         }
     }
